@@ -9,12 +9,6 @@
                     onchange="window.location.href = `?grade=${this.value}&region={{ request()->get('region') }}`">
                     <option selected disabled hidden>Pilih Rombel</option>
                     <option value="">All</option>
-                    @forelse ($grades as $grade)
-                        <option {{ $grade->id == request()->get('grade') ? 'selected disabled' : '' }}
-                            value="{{ $grade->id }}">{{ $grade->name }}</option>
-                    @empty
-                        <option value="" disabled>Empty</option>
-                    @endforelse
                 </select>
                 <a href="{{ route('dashboard.input-table.create') }}" onclick="event.preventDefault()"
                     data-bs-toggle="modal" data-bs-target="#modalCreate" class="btn btn-primary"><i
@@ -133,12 +127,6 @@
                             <label for="grade_id" class="form-label">Rombel</label>
                             <select name="grade_id" class="form-select @error('grade_id') is-invalid @enderror"
                                 id="grade_id">
-                                @forelse ($grades as $grade)
-                                    <option {{ $grade->id === old('grade_id') ? 'selected' : '' }}
-                                        value="{{ $grade->id }}">{{ $grade->name }}</option>
-                                @empty
-                                    <option disabled selected value="">Empty</option>
-                                @endforelse
                             </select>
                             @error('grade_id')
                                 <div class="invalid-feedback">

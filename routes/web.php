@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
@@ -8,7 +9,6 @@ use App\Http\Controllers\GradeController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\StudentFormController;
 use App\Http\Controllers\StudentTableController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CentangController;
 use App\Http\Controllers\PendidikController;
 use App\Http\Controllers\Pendidik2Controller;
