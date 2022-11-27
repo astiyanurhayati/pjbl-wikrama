@@ -52,14 +52,19 @@ class StudentFormController extends Controller
             'nis' => ['required'],
             'grade_id' => ['required', 'exists:grades,id'],
             'region_id' => ['required', 'exists:regions,id'],
-            'username' => ['required', 'string', 'alpha_dash', 'unique:users,username', 'min:6'],
-            'password' => ['required', Password::min(8)],
+            // 'username' => ['required', 'string', 'alpha_dash', 'unique:users,username', 'min:6'],
+            // 'password' => ['required', Password::min(8)],
         ]);
 
         $validatedData['type'] = 'form';
-
-        $user = User::create(['username' => $validatedData['username'], 'password' => bcrypt($validatedData['password'])]);
-        unset($validatedData['username'], $validatedData['password']);
+        
+        $username = substr(strtolower($request->name), 0, 3) . substr($request->nis, 4, 7);
+        
+        $user = User::create([
+            'username' => $username, 
+            'password' => bcrypt($username),
+        ]);
+        // unset($validatedData['username'], $validatedData['password']);
 
         $validatedData['user_id'] = $user->id;
 

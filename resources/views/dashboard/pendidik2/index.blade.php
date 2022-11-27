@@ -1,8 +1,8 @@
 <x-app-layout title="Hasil">
     <div class="card">
-        <div class="card-title d-flex align-items-center">
+        <div class="card-title d-flex align-items-center px-3">
             <div class="col-6">
-                <h5>Form Hasil</h5>
+                <h5>Rekap Deskripsi Pekerjaan</h5>
             </div>
             <form action="{{ route('dashboard.pendidik2.index') }}" method="GET" class="col-6  d-flex align-items-center">
                 <select name="month" id="month" class="form-control">

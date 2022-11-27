@@ -1,34 +1,44 @@
-<?php
-use App\Http\Controllers\StudentTableController;
-?>
-
 <x-app-layout title="Hasil">
     <div class="card">
-        <div class="card-title d-flex align-items-center">
+        <div class="card-title d-flex align-items-center px-3">
             <div class="col-6">
-                <h5>Form Hasil {{ $student->name }}</h5>
+                <h5>Rekap Checklist Pembiasaan</h5>
             </div>
-            <form action="" method="get" class="col-6  d-flex align-items-center">
+            <form action="" method="GET" class="col-6  d-flex align-items-center">
                 <select name="month" id="month" class="form-control">
                     <option value="{{ date('m') }}" disabled selected hidden>{{ $bulan }}</option>
-                    <option value="1">Januari</option>
-                    <option value="2">Februari</option>
-                    <option value="3">Maret</option>
-                    <option value="4">April</option>
-                    <option value="5">Mei</option>
-                    <option value="6">Juni</option>
-                    <option value="7">Juli</option>
-                    <option value="8">Agustus</option>
-                    <option value="9">September</option>
+                    <option value="01">Januari</option>
+                    <option value="02">Februari</option>
+                    <option value="03">Maret</option>
+                    <option value="04">April</option>
+                    <option value="05">Mei</option>
+                    <option value="06">Juni</option>
+                    <option value="07">Juli</option>
+                    <option value="08">Agustus</option>
+                    <option value="09">September</option>
                     <option value="10">Oktober</option>
                     <option value="11">November</option>
                     <option value="12">Desember</option>
                 </select>
-                <button class="btn btn-primary ms-2">Search</button>
-                <button href="" class="btn btn-warning ms-2">Reset</button>
+                <button type="submit" class="btn btn-primary ms-2">Search</button>
+                <button href="{{ route('dashboard.input-table.show', $student->id) }}" class="btn btn-warning ms-2">Reset</button>
             </form>
         </div>
         <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <b>{{ $student->name }}</b>
+                    <br>
+                    <small>{{ $student->nis }} || {{ $student->grade->name }}
+                        <br>
+                        {{ $student->region->name }}
+                    </small>
+                </div>
+                
+                <div>
+                    <a href="{{ route('dashboard.input-table.index') }}" class="btn btn-secondary">Kembali</a>
+                </div>
+            </div>
             <div class="table-responsive mt-3">
                 <table class="table table-bordered">
                     <thead>
@@ -39,11 +49,11 @@ use App\Http\Controllers\StudentTableController;
                             <th>
                                 <center>Pembiasaan<center>
                             </th>
-                            @for ($i = 1; $i <= $m; $i++)
+                            @foreach($myActivities as $ma)
                                 <th>
-                                    <center>Day {{ $i }}<center>
+                                    <center>Tgl. {{ \Carbon\Carbon::parse($ma['date'])->format('j') }}<center>
                                 </th>
-                            @endfor
+                            @endforeach
                         </tr>
                     </thead>
                     <tbody>
@@ -72,10 +82,20 @@ use App\Http\Controllers\StudentTableController;
                                                 </a>
                                             </form>
                                         </td> --}}
-                                        @for ($i = 1; $i <= $m; $i++)
-                                            <td><center><input type="checkbox" style="pointer-events: none;" @if (StudentTableController::getCheck($activity->id, $student->user_id, $i, $bln )) checked @endif></center></td>
-                                            {{-- <td>{{ StudentTableController::getCheck($activity->id, $student->user_id, $i, $bln) }}</td> --}}
-                                        @endfor
+                                        @foreach($myActivities as $ma)
+                                            @php 
+                                                $checkId = explode(",", $ma['activity_id'])
+                                            @endphp
+                                            <td>
+                                                <center>
+                                                    @if(in_array($activity->id, $checkId))
+                                                    <i class="bi bi-check-circle-fill text-primary"></i>
+                                                    @else
+                                                    -
+                                                    @endif
+                                                </center>
+                                            </td>
+                                        @endforeach
                                     </tr>
                                 @endif
                             @empty

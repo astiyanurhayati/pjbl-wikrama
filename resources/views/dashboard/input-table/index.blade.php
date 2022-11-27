@@ -1,6 +1,6 @@
  <x-app-layout title="Soal">
     <div class="card">
-        <div class="card-title">
+        <div class="card-title px-3">
             <h5>Formulir PJBL</h5>
         </div>
         <div class="card-body">
@@ -16,11 +16,11 @@
                         <option value="" disabled>Empty</option>
                     @endforelse
                 </select>
-                <a href="{{ route('dashboard.input-table.create') }}" onclick="event.preventDefault()"
+                <!-- <a href="{{ route('dashboard.input-table.create') }}" onclick="event.preventDefault()"
                     data-bs-toggle="modal" data-bs-target="#modalCreate" class="btn btn-primary"><i
                         class="bi bi-plus"></i>
                     Tambah Siswa
-                </a>
+                </a> -->
             </div>
             @if (session()->has('success'))
                 <div class="alert alert-success mt-3" role="alert">
@@ -57,12 +57,12 @@
                                 <td>{{ $student->region->name }}</td>
                                 <td>{{ $student->grade->name }}</td>
                                 <td class="column__max">
-                                    <a href="{{ route('dashboard.input-table.activities', $student->id) }}" class="btn btn-primary">
-                                        <span>Form Aktifitas</span>
+                                    <a href="{{ route('dashboard.input-table.activities', $student->user->id) }}" class="btn btn-primary">
+                                        <span>Desk. Pekerjaan</span>
                                     </a>
                                 </td> <td class="column__max">
                                     <a href="{{ route('dashboard.input-table.show', $student->id) }}" class="btn btn-primary">
-                                        <span>Form Pembiasaan</span>
+                                        <span>Checklist Pembiasaan</span>
                                     </a>
                                 </td>
                                 <td class="column__max">
@@ -96,7 +96,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modalCreate" tabindex="-1" aria-labelledby="modalCreateLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="modalCreate" tabindex="-1" aria-labelledby="modalCreateLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -190,5 +190,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </x-app-layout>

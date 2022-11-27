@@ -1,6 +1,6 @@
 <x-app-layout title="Tambah Rayon">
     <div class="card">
-        <div class="card-title">
+        <div class="card-title px-3">
             <h5>Form Tambah Rayon</h5>
         </div>
         <div class="card-body">
@@ -17,6 +17,7 @@
                     @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{{ route('dashboard.regions.index') }}" class="btn btn-secondary">Kembali</a>
             </form>
         </div>
     </div>

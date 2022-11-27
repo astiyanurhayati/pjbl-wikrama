@@ -25,33 +25,33 @@
                 @if (auth()->user()->is_teacher)
                     <a class="aside__link {{ Route::currentRouteNamed('dashboard.grades.*') ? 'active' : '' }}"
                         href="{{ route('dashboard.grades.index') }}">
-                        <i class="bi bi-boxes"></i>
+                        <i class="bi bi-person-workspace"></i>
                         Rombel
                     </a>
                     <a class="aside__link {{ Route::is('dashboard.regions.*') ? 'active' : '' }}"
                         href="{{ route('dashboard.regions.index') }}">
-                        <i class="bi bi-map"></i>
+                        <i class="bi bi-geo-alt-fill"></i>
                         Rayon
                     </a>
                     <a class="aside__link {{ Route::is('dashboard.categories.*') ? 'active' : '' }}"
                         href="{{ route('dashboard.categories.index') }}">
-                        <i class="bi bi-tags"></i>
-                        Paket Soal
+                        <i class="bi bi-pie-chart-fill"></i>
+                        Kategori Pembiasaan
                     </a>
                     <a class="aside__link {{ Route::is('dashboard.activities.*') ? 'active' : '' }}"
                         href="{{ route('dashboard.activities.index') }}">
-                        <i class="bi bi-command"></i>
-                        Soal
+                       <i class="bi bi-pencil-square"></i>
+                        Desk. Pembiasaan
                     </a>
                     <a class="aside__link {{ Route::is('dashboard.input-form.*') ? 'active' : '' }}"
                         href="{{ route('dashboard.input-form.index') }}">
-                        <i class="bi bi-arrow-through-heart"></i>
-                        Students
+                        <i class="bi bi-person-bounding-box"></i>
+                        Siswa
                     </a>
                     <a class="aside__link {{ Route::is('dashboard.input-table.*') ? 'active' : '' }}"
                         href="{{ route('dashboard.input-table.index') }}">
-                        <i class="bi bi-activity"></i>
-                        Table
+                       <i class="bi bi-journal-bookmark-fill"></i>
+                        Rekap Hasil
                     </a>
                 @else
                 <a class="aside__link {{ Route::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
@@ -117,15 +117,15 @@
     <script>
         $(document).ready(function () {
 
-        $('body').on('click', '#detailJob', function (event) {
+            $('body').on('click', '#detailJob', function (event) {
 
-            event.preventDefault();
-            var id = $(this).data('id');
-            $.get('pendidik2/' + id, function (data) {
-                document.querySelector('#date-job').innerHTML = new Date(data.data.date).toLocaleDateString('id-ID', { month:"long", day:"numeric", year:"numeric"});;
-                document.querySelector('#content-job').innerHTML = data.data.content;
-            })
-        });
+                event.preventDefault();
+                var id = $(this).data('id');
+                $.get('pendidik2/' + id, function (data) {
+                    document.querySelector('#date-job').innerHTML = new Date(data.data.date).toLocaleDateString('id-ID', { month:"long", day:"numeric", year:"numeric"});;
+                    document.querySelector('#content-job').innerHTML = data.data.content;
+                })
+            });
 
         }); 
     </script>
