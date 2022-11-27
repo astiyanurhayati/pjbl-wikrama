@@ -14,11 +14,34 @@ class Pendidik2Controller extends Controller
      *
      * @return \Illuminate\Http\Response 
      */
-    public function index()
+    public function index(Request $request)
     {
-        $jobs = Job::latest()->get();
+        if(isset($_GET['month'])){
+            $bln = $_GET['month'];
+            $m = cal_days_in_month(CAL_GREGORIAN,$bln,date('y'));
+            $jobs = Job::whereMonth('date', $bln)->get();
+        }else{
+            $m = date('m');
+            $bln = $m;
+            $jobs = Job::latest()->get();
+        }
+        $bulan = [
+            '01' => 'Januari',
+            '02' => 'Febuari',
+            '03' => 'Maret',
+            '04' => 'April',
+            '05' => 'Mei',
+            '06' => 'Juni',
+            '07' => 'Juli',
+            '08' => 'Agustus',
+            '09' => 'September',
+            '10' => 'Oktober',
+            '11' => 'November',
+            '12' => 'Desember',
+        ];
+        $bulan = $bulan[$bln];
 
-        return view('dashboard.pendidik2.index', compact('jobs'));
+        return view('dashboard.pendidik2.index', compact('jobs', 'bulan'));
     }
 
     /**
@@ -50,7 +73,11 @@ class Pendidik2Controller extends Controller
      */
     public function show($id)
     {
-        //
+        $job = Job::find($id);
+        
+        return response()->json([
+	      'data' => $job
+	    ]);
     }
 
     /**

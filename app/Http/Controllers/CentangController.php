@@ -57,7 +57,7 @@ class CentangController extends Controller
         $validated['activity_id']= "," . $check . ",";
         DailyActivity::create($validated);
         $request->session()->flash('success-add');
-        return redirect()->route('dashboard.centang.index');
+        return redirect()->route('dashboard.pendidik.index');
     }
 
     /**

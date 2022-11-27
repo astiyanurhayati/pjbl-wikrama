@@ -1,7 +1,7 @@
 <x-app-layout title="Soal">
     <div class="card">
         <div class="card-title">
-            <h5>Form Input</h5>
+            <h5>Form Checklist Kegiatan</h5>
         </div>
         <div class="card-body">
             {{-- <p>{{ print_r(session()->all()) }}</p> --}}
@@ -70,7 +70,10 @@
                         @endforelse     
                     </tbody>
                 </table>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="d-flex justify-content-between">
+                    <div></div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </form>
         </div>
     </div>
