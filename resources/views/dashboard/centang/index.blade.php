@@ -15,7 +15,7 @@
                     <span>Data Berhasil Ditambahkan</span>
                 </div>
             @endif
-            <form method="POST" action="/dashboard/centang/store" class="table-responsive mt-3">
+            <form method="POST" action="{{ route('dashboard.centang.store') }}" class="table-responsive mt-3">
                 @csrf
                 <table class="table table-bordered">
                     <thead>
