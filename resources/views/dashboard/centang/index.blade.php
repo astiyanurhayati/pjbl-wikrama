@@ -1,6 +1,6 @@
 <x-app-layout title="Soal">
     <div class="card">
-        <div class="card-title">
+        <div class="card-title px-3">
             <h5>Form Checklist Kegiatan</h5>
         </div>
         <div class="card-body">

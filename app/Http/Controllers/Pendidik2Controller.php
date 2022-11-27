@@ -6,6 +6,7 @@ use App\Models\Activity;
 use App\Models\Category;
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Pendidik2Controller extends Controller
 {
@@ -19,11 +20,11 @@ class Pendidik2Controller extends Controller
         if(isset($_GET['month'])){
             $bln = $_GET['month'];
             $m = cal_days_in_month(CAL_GREGORIAN,$bln,date('y'));
-            $jobs = Job::whereMonth('date', $bln)->get();
+            $jobs = Job::where('student_id', Auth::user()->id)->whereMonth('date', $bln)->get();
         }else{
             $m = date('m');
             $bln = $m;
-            $jobs = Job::latest()->get();
+            $jobs = Job::where('student_id', Auth::user()->id)->whereMonth('date', $bln)->get();
         }
         $bulan = [
             '01' => 'Januari',

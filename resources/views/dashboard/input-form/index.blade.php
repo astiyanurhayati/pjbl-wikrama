@@ -1,6 +1,6 @@
 <x-app-layout title="Soal">
     <div class="card">
-        <div class="card-title">
+        <div class="card-title px-3">
             <h5>Daftar Siswa</h5>
         </div>
         <div class="card-body">
@@ -38,10 +38,12 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th class="text-center">No</th>
+                            <th>NIS</th>
                             <th>Nama Siswa</th>
                             <th>Rayon</th>
                             <th>Rombel</th>
+                            <th>Akun</th>
                             <th class="text-center" colspan="3">
                                 Aksi
                             </th>
@@ -53,9 +55,13 @@
                                 <td class="column__max text-center">
                                     {{ $loop->iteration }}
                                 </td>
+                                <td>{{ $student->nis }}</td>
                                 <td>{{ $student->name }}</td>
                                 <td>{{ $student->region->name }}</td>
                                 <td>{{ $student->grade->name }}</td>
+                                <td>
+                                   {{ $student->user->username }}
+                                </td>
                                 <td class="column__max">
                                     <a href="{{ route('dashboard.input-form.edit', $student->id) }}" class="text-blue">
                                         <i class="bi bi-pencil-square"></i>
@@ -87,6 +93,24 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="showAccount" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="showAccountTitle"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div id="account-content"></div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
     <div class="modal fade" id="modalCreate" tabindex="-1" aria-labelledby="modalCreateLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -102,7 +126,7 @@
                             <label for="name" class="form-label">Nama</label>
                             <input type="text" value="{{ old('name') }}" name="name"
                                 class="form-control @error('name') is-invalid @enderror" id="name"
-                                placeholder="Rifka Tria Permana">
+                                placeholder="Masukkan nama siswa">
                             @error('name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -113,7 +137,7 @@
                             <label for="nis" class="form-label">NIS</label>
                             <input type="number" value="{{ old('nis') }}" name="nis"
                                 class="form-control @error('nis') is-invalid @enderror" id="nis"
-                                placeholder="12008129">
+                                placeholder="Masukkan nis siswa">
                             @error('nis')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -154,7 +178,7 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" value="{{ old('username') }}" name="username"
                                 class="form-control @error('username') is-invalid @enderror" id="username"
@@ -164,8 +188,8 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        </div>
-                        <div class="mb-3">
+                        </div> -->
+                        <!-- <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" value="{{ old('password') }}" name="password"
                                 class="form-control @error('password') is-invalid @enderror" id="password"
@@ -175,7 +199,7 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        </div>
+                        </div> -->
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

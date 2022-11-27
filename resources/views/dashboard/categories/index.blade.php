@@ -1,6 +1,6 @@
 <x-app-layout title="Paket Soal">
     <div class="card">
-        <div class="card-title">
+        <div class="card-title px-3">
             <h5>Table Paket Soal</h5>
         </div>
         <div class="card-body">

@@ -35,10 +35,13 @@ Route::middleware('auth')->group(function () {
         // StudentTableController@method=akmal
         Route::get('/input-table/activities/{student}', [StudentTableController::class, 'activities'])->name('input-table.activities');
 
+        // json
+        Route::get('/input-table/activities/pendidik2/{student}', [StudentTableController::class, 'pendidik2'])->name('input-table.activities.pendidik2');
+
         Route::resource('/input-form', StudentFormController::class)->parameters([
             'input_form' => 'student'
         ]);
-        
+
         Route::resource('pendidik', PendidikController::class);
         // Route::resource('centang', CentangController::class);
         Route::get('centang', [CentangController::class, 'index'])->name('centang.index');

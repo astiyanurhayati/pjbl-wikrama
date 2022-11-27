@@ -17,14 +17,14 @@ class TeacherSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'username' => 'cika',
-            'password' => bcrypt('cika'),
+            'username' => 'adminrpl',
+            'password' => bcrypt('rplwajibngulik'),
             'is_teacher' => true
         ]);
 
         Teacher::create([
-            'name' => 'cika',
-            'nip' => '1200761612',
+            'name' => 'adminrpl',
+            'nip' => '1111111111',
             'user_id' => $user->id
         ]);
     }

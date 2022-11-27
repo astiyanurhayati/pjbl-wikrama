@@ -8,6 +8,7 @@ use App\Models\Region;
 use App\Models\Student;
 use App\Models\Activity;
 use App\Models\Category;
+use App\Models\Job;
 use Illuminate\Http\Request;
 use App\Models\DailyActivity;
 use Illuminate\Validation\Rule;
@@ -136,21 +137,23 @@ class StudentTableController extends Controller
     public function show(Student $input_table){
         if(isset($_GET['month'])){
             $bln = $_GET['month'];
-            $m = cal_days_in_month(CAL_GREGORIAN,$bln,date('y'));
+            // $m = cal_days_in_month(CAL_GREGORIAN,$bln,date('y'));
+            $myActivities = DailyActivity::where('student_id', $input_table['user_id'])->whereMonth('date', $bln)->orderBy('date')->get();
         }else{
             $m = date('m');
             $bln = $m;
+            $myActivities = DailyActivity::where('student_id', $input_table['user_id'])->whereMonth('date', $m)->orderBy('date')->get();
         }
         $bulan = [
-            '1' => 'Januari',
-            '2' => 'Febuari',
-            '3' => 'Maret',
-            '4' => 'April',
-            '5' => 'Mei',
-            '6' => 'Juni',
-            '7' => 'Juli',
-            '8' => 'Agustus',
-            '9' => 'September',
+            '01' => 'Januari',
+            '02' => 'Febuari',
+            '03' => 'Maret',
+            '04' => 'April',
+            '05' => 'Mei',
+            '06' => 'Juni',
+            '07' => 'Juli',
+            '08' => 'Agustus',
+            '09' => 'September',
             '10' => 'Oktober',
             '11' => 'November',
             '12' => 'Desember',
@@ -158,8 +161,10 @@ class StudentTableController extends Controller
         $bulan = $bulan[$bln];
         $activities = Activity::orderBy('name')->get();
         $categories = Category::orderBy('name')->get();
+
         $student = $input_table;
-        return view('dashboard.input-table.show', compact('student', 'activities', 'categories', 'bulan', 'bln', 'm'));
+
+        return view('dashboard.input-table.show', compact('activities', 'categories', 'bulan', 'bln', 'myActivities', 'student'));
     }
 
     static function getCheck($activity_id, $student_id, $date, $month)
@@ -173,32 +178,42 @@ class StudentTableController extends Controller
         }
     }
 
-    public function activities (Student $input_table, $student){
+    public function activities (Request $request, $student){
         if(isset($_GET['month'])){
             $bln = $_GET['month'];
             $m = cal_days_in_month(CAL_GREGORIAN,$bln,date('y'));
+            $jobs = Job::where('student_id', $student)->whereMonth('date', $bln)->get();
         }else{
             $m = date('m');
             $bln = $m;
+            $jobs = Job::where('student_id', $student)->whereMonth('date', $bln)->get();
         }
         $bulan = [
-            '1' => 'Januari',
-            '2' => 'Febuari',
-            '3' => 'Maret',
-            '4' => 'April',
-            '5' => 'Mei',
-            '6' => 'Juni',
-            '7' => 'Juli',
-            '8' => 'Agustus',
-            '9' => 'September',
+            '01' => 'Januari',
+            '02' => 'Febuari',
+            '03' => 'Maret',
+            '04' => 'April',
+            '05' => 'Mei',
+            '06' => 'Juni',
+            '07' => 'Juli',
+            '08' => 'Agustus',
+            '09' => 'September',
             '10' => 'Oktober',
             '11' => 'November',
             '12' => 'Desember',
         ];
         $bulan = $bulan[$bln];
-        $activities = Activity::orderBy('name')->get();
-        $categories = Category::orderBy('name')->get();
-        $student = $input_table;
-        return view('dashboard.input-table.activities', compact('student', 'activities', 'categories', 'bulan', 'bln', 'm'));
+        $studentData = Student::where('user_id', $student)->first();
+
+        return view('dashboard.input-table.activities', compact('studentData', 'jobs', 'bulan'));
+    }
+
+    public function pendidik2($student)
+    {
+        $job = Job::find($student);
+        
+        return response()->json([
+	      'data' => $job
+	    ]);
     }
 }

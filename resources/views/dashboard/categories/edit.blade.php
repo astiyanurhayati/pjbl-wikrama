@@ -1,6 +1,6 @@
 <x-app-layout title="Edit Paket Soal {{ $category->name }}">
     <div class="card">
-        <div class="card-title">
+        <div class="card-title px-3">
             <h5>Form Edit Paket Soal {{ $category->name }}</h5>
         </div>
         <div class="card-body">
@@ -18,6 +18,7 @@
                     @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{{ route('dashboard.categories.index') }}" class="btn btn-secondary">Kembali</a>
             </form>
         </div>
     </div>

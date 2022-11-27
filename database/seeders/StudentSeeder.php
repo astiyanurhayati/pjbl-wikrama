@@ -17,8 +17,8 @@ class StudentSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'username' => 'akmal',
-            'password' => bcrypt('akmal'),
+            'username' => 'siswa',
+            'password' => bcrypt('siswa'),
         ]);
 
         // Student::create([
