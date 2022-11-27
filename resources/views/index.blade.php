@@ -15,6 +15,11 @@
                         {{ $message }}
                     </div>
                 @enderror
+                @if(Session::get('login'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ Session::get('login') }}
+                    </div>
+                @endif
                 @csrf
                 <div class="login__input mb-3">
                     <label class="login__input__label" for="username">

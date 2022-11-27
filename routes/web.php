@@ -18,10 +18,10 @@ Route::middleware('guest')->group(function () {
     Route::post('/', [AuthController::class, 'authenticate'])->name('authenticate');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('isAdmin')->group(function () {
     Route::delete('/', [AuthController::class, 'logout'])->name('logout');
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
     Route::post('/dashboard', [DashboardController::class, 'store'])->name('dashboard.store');
     Route::prefix('/dashboard')->name('dashboard.')->group(function () {
         Route::resources([
@@ -41,6 +41,17 @@ Route::middleware('auth')->group(function () {
         Route::resource('/input-form', StudentFormController::class)->parameters([
             'input_form' => 'student'
         ]);
+
+    });
+});
+
+
+Route::middleware('isStudent')->group(function () {
+    Route::delete('/', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/', [DashboardController::class, 'store'])->name('dashboard.store');
+    Route::prefix('/')->name('dashboard.')->group(function () {
 
         Route::resource('pendidik', PendidikController::class);
         // Route::resource('centang', CentangController::class);
