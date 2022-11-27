@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->integer('week_id')->nullable();
-            $table->integer('student_id')->nullable();
+            $table->string('student_id')->nullable();
             $table->date('date');
             $table->string('start_jp');
             $table->string('end_jp');

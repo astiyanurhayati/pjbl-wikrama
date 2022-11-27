@@ -3,8 +3,7 @@
         <div class="login__left">
             <h2 class="login__h fs-1">Project Based Learning</h2>
             <p>
-                Fringilla phasellus faucibus scelerisque eleifend donec
-                pretium vulputate sapien nec.
+                Website laporan harian pekerjaan siswa dengan alur berbasis industri.
             </p>
             <img class="login__left__img" src="/img/hero-login.png" alt="Login" />
         </div>
