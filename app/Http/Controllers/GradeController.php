@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Grade;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class GradeController extends Controller
 {
@@ -16,7 +17,7 @@ class GradeController extends Controller
     {
         $grades = Grade::orderBy('name')->get();
 
-        return view('dashboard.grades.index', compact('grades'));
+        return view('dashboard.grades.index2', compact('grades'));
     }
 
     /**
@@ -26,7 +27,7 @@ class GradeController extends Controller
      */
     public function create()
     {
-        return view('dashboard.grades.create');
+        return view('dashboard.grades.create2');
     }
 
     /**
@@ -42,8 +43,8 @@ class GradeController extends Controller
         ]);
 
         Grade::create($validatedData);
-
-        return to_route('dashboard.grades.index')->with('success', 'Berhasil menambah rombel baru');
+        toast('Your Post as been submited!','success');
+        return to_route('dashboard.grades.index');
     }
 
     /**
@@ -54,7 +55,7 @@ class GradeController extends Controller
      */
     public function edit(Grade $grade)
     {
-        return view('dashboard.grades.edit', compact('grade'));
+        return view('dashboard.grades.edit2', compact('grade'));
     }
 
     /**
@@ -72,7 +73,9 @@ class GradeController extends Controller
 
         $grade->update($validatedData);
 
-        return to_route('dashboard.grades.index')->with('success', 'Berhasil mengubah rombel ' . $grade->name);
+        Alert::success('Success', 'Berhasil Edit Rombel');
+        return  redirect()->route('dashboard.grades.index')->with($grade->name);
+        
     }
 
     /**
@@ -84,7 +87,8 @@ class GradeController extends Controller
     public function destroy(Grade $grade)
     {
         $grade->delete();
-
-        return to_route('dashboard.grades.index')->with('success', 'Berhasil menghapus rombel ' . $grade->name);
+        toast('Tags deleted!','success');
+        return to_route('dashboard.grades.index')->with($grade->name);
+        
     }
 }

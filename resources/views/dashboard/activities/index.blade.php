@@ -1,13 +1,30 @@
-<x-app-layout title="Soal">
+<x-layout title="Soal">
+    @section('subjudul')
+    <div class="pagetitle">
+        <h1>Tabel Soal</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Desk Pembiasaan </li>
+            </ol>
+        </nav>
+    </div>
+@endsection
+
+    <link rel="stylesheet" href="{{ asset('assets/css/table.css') }}">
+    <div class="tombol">
+        <div></div>
+        <a href="{{ route('dashboard.activities.create') }}" onclick="event.preventDefault()" data-bs-toggle="modal"
+            data-bs-target="#modalCreate" class="btn btn-primary"><i class="bi bi-plus"></i>
+            Tambah Soal
+        </a>
+    </div>
     <div class="card">
-        <div class="card-title px-3">
+        {{-- <div class="card-title px-3">
             <h5>Table Soal</h5>
-        </div>
+        </div> --}}
         <div class="card-body">
-            <a href="{{ route('dashboard.activities.create') }}" onclick="event.preventDefault()" data-bs-toggle="modal"
-                data-bs-target="#modalCreate" class="btn btn-primary"><i class="bi bi-plus"></i>
-                Tambah Soal
-            </a>
+           
             @if (session()->has('success'))
                 <div class="alert alert-success mt-3" role="alert">
                     {{ session('success') }}
@@ -123,4 +140,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-layout>

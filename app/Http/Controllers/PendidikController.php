@@ -17,6 +17,15 @@ class PendidikController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function welcome(){
+        return view('dashboard.welcome');
+    }
+
+    public function welcome_teacher(){
+        return view('dashboard.welcome_teacher');
+    }
+
+     
     static function getCheck($activity_id, $date, $month)
     {
         $daily_activities = DailyActivity::where('student_id', Auth::user()->id)->whereMonth('date', $month)->whereDay('date', $date)->get('activity_id');

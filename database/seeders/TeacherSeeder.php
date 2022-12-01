@@ -17,8 +17,8 @@ class TeacherSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'username' => 'adminrpl',
-            'password' => bcrypt('rplwajibngulik'),
+            'username' => 'asti',
+            'password' => bcrypt('asti'),
             'is_teacher' => true
         ]);
 

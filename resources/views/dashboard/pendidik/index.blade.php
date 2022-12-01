@@ -2,7 +2,7 @@
 use App\Http\Controllers\PendidikController;
 ?>
 
-<x-app-layout title="Hasil">
+<x-layout title="Hasil">
     <div class="card">
         <div class="card-title d-flex align-items-center px-3">
             <div class="col-6">
@@ -112,4 +112,4 @@ use App\Http\Controllers\PendidikController;
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-layout>
