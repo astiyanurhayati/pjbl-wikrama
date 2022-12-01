@@ -5,6 +5,7 @@
         <h1>Form Checklist Kegiatan</h1>
         <nav>
             <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                 <li class="breadcrumb-item"><a href="index.html">Pembiasaan</a></li>
                 <li class="breadcrumb-item active">Form </li>
             </ol>
@@ -84,7 +85,10 @@
                 </table>
                 <div class="d-flex justify-content-between">
                     <div></div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="tombol">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    
                 </div>
             </form>
         </div>

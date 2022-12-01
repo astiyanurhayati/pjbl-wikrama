@@ -14,6 +14,29 @@
   form.search-form.d-flex.align-items-center {
     margin: 0;
   }
+
+  .isi-desk{
+    display:flex;
+    align-item: center;
+    align-items: flex-end;
+
+  }
+
+  .container-card{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.display{
+  display: flex;
+  gap: 20px;
+  
+}
+
+  li.nav-item.dropdown.pe-3 {
+    padding-right: 2rem!important;
+  }
   
   
   body {

@@ -207,7 +207,7 @@ class StudentTableController extends Controller
 
         return view('dashboard.input-table.activities', compact('studentData', 'jobs', 'bulan'));
     }
-
+    
     public function pendidik2($student)
     {
         $job = Job::find($student);

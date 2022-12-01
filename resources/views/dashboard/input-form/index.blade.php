@@ -1,5 +1,17 @@
 <x-layout title="Soal">
     <link rel="stylesheet" href="{{ asset('assets/css/table.css') }}">
+    @section('subjudul')
+    <div class="pagetitle">
+        <h1>Siswa</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Daftar Siswa</li>
+            </ol>
+        </nav>
+    </div>
+@endsection
+
     <div class="card">
         <div class="card-title px-3">
             <h5>Daftar Siswa</h5>

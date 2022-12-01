@@ -3,6 +3,22 @@ use App\Http\Controllers\PendidikController;
 ?>
 
 <x-layout title="Hasil">
+
+    @section('subjudul')
+    <div class="pagetitle">
+        <h1>Rekap Pembiasaan</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item ">Pembiasaan</li>
+
+                <li class="breadcrumb-item active">Rekap</li>
+                
+            </ol>
+        </nav>
+    </div>
+    @endsection
+
     <div class="card">
         <div class="card-title d-flex align-items-center px-3">
             <div class="col-6">

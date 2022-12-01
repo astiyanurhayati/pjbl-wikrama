@@ -35,6 +35,10 @@ a.btn.btn-primary {
     border: none;
     margin-right: 20px
 }
-
+.container-card{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px;
+}
 
 .checkbox{background-color:#fff;display:inline-block;height:28px;margin:0 .25em;width:28px;border-radius:4px;border:1px solid #ccc}

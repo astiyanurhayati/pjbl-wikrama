@@ -8,7 +8,8 @@
       <h1>Manage Rombel</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Manage</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Manage</li>
           <li class="breadcrumb-item active">Rombel</li>
         </ol>
       </nav>
