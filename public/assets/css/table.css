@@ -1,0 +1,40 @@
+
+.table-custom td, .table-custom th{
+    border:1px #4157989e solid;
+  
+   
+}
+.th{
+    width: 10px;
+}
+
+.tombol{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    margin-top: 20px;
+    
+
+}
+.tombol-kiri{
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    margin-top: 20px;
+
+}
+.tombol button, .tombol-kiri button{
+    background: #415798;
+
+}
+
+a.btn.btn-primary {
+    background: orange;
+    border: none;
+    margin-right: 20px
+}
+
+
+.checkbox{background-color:#fff;display:inline-block;height:28px;margin:0 .25em;width:28px;border-radius:4px;border:1px solid #ccc}

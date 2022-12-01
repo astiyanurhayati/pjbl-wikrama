@@ -1,4 +1,16 @@
-<x-app-layout title="Dashboard">
+<x-layout title="Dashboard">
+
+    @section('subjudul')
+    <div class="pagetitle">
+        <h1>Form Deskripsi Pengerjaan</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Pekerjaan</a></li>
+                <li class="breadcrumb-item active">Form </li>
+            </ol>
+        </nav>
+    </div>
+@endsection
 
     @if (auth()->user()->is_teacher)
         <h1>Selamat datang </h1>
@@ -13,11 +25,9 @@
                 {{ Session::get('error') }}
             </div>
         @endif
-        <div class="card">
+       
+        <div class="card px-3">
             <div class="card-title">
-                <div class="col-md-8">
-                    <h5>Form Deskripsi Pekerjaan</h5>
-                </div>
                 <div class="card-body px-0">
                     @if (Session::get('failed'))
                         <div class="alert alert-danger">
@@ -89,4 +99,4 @@
         </script>
     @endpush
     @stack('scripts')
-</x-app-layout>
+</x-layout>

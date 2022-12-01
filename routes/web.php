@@ -24,9 +24,10 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware('isAdmin')->group(function () {
-
+    Route::get('/welcome-teacher', [PendidikController::class, 'welcome_teacher'])->name('welcome_teacher');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
     Route::post('/dashboard', [DashboardController::class, 'store'])->name('dashboard.store');
+
     Route::prefix('/dashboard')->name('dashboard.')->group(function () {
         Route::resources([
             '/regions' => RegionController::class,
@@ -51,15 +52,17 @@ Route::middleware('isAdmin')->group(function () {
 
 
 Route::middleware('isStudent')->group(function () {
+    
+    Route::get('/welcome', [PendidikController::class, 'welcome'])->name('welcome');
 
     Route::get('/student', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/student', [DashboardController::class, 'store'])->name('dashboard.store');
     Route::prefix('/student')->name('dashboard.')->group(function () {
-
         Route::resource('pendidik', PendidikController::class);
         // Route::resource('centang', CentangController::class);
         Route::get('centang', [CentangController::class, 'index'])->name('centang.index');
         Route::post('centang/store', [CentangController::class, 'store'])->name('centang.store');
         Route::resource('pendidik2', Pendidik2Controller::class);
     });
+
 });

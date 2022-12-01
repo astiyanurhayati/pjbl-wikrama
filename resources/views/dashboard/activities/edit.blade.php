@@ -1,4 +1,4 @@
-<x-app-layout title="Edit Soal {{ $activity->name }}">
+<x-layout title="Edit Soal {{ $activity->name }}">
     <div class="card">
         <div class="card-title px-3">
             <h5>Form Edit Soal {{ $activity->name }}</h5>
@@ -42,4 +42,4 @@
             </form>
         </div>
     </div>
-</x-app-layout>
+</x-layout>

@@ -1,8 +1,18 @@
-<x-app-layout title="Soal">
+<x-layout title="Soal">
+    <link rel="stylesheet" href="{{ asset('assets/css/table.css') }}">
+    @section('subjudul')
+    <div class="pagetitle">
+        <h1>Form Checklist Kegiatan</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Pembiasaan</a></li>
+                <li class="breadcrumb-item active">Form </li>
+            </ol>
+        </nav>
+    </div>
+@endsection
+
     <div class="card">
-        <div class="card-title px-3">
-            <h5>Form Checklist Kegiatan</h5>
-        </div>
         <div class="card-body">
             {{-- <p>{{ print_r(session()->all()) }}</p> --}}
             @if(session('error-add'))
@@ -40,7 +50,7 @@
                                         <td><input type="text" name="activity_id" value="{{ $activity->id }}" hidden>{{ $activity->name }}</td>
         
                                         <td class="column__max">
-                                            <center><input type="checkbox" name="check[]" value="{{ $activity->id }}"></center>
+                                            <center><input type="checkbox" class="checkbox" name="check[]" value="{{ $activity->id }}"></center>
                                             <!-- <form action="{{ route('dashboard.activities.destroy', $activity->id) }}"
                                                 method="POST">
                                                 @csrf
@@ -51,6 +61,8 @@
                                                     class="text-danger">
                                                 </a>
                                             </form> -->
+                                           
+
                                         </td>
                                     </tr>
                                 @endif
@@ -77,4 +89,4 @@
             </form>
         </div>
     </div>
-</x-app-layout>
+</x-layout>

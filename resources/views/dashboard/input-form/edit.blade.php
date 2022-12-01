@@ -1,4 +1,4 @@
-<x-app-layout title="Edit Siswa {{ $input_form->name }}">
+<x-layout title="Edit Siswa {{ $input_form->name }}">
     <div class="card">
         <div class="card-title px-3">
             <h5>Form Edit Siswa {{ $input_form->name }}</h5>
@@ -107,4 +107,4 @@
             </form>
         </div>
     </div>
-</x-app-layout>
+</x-layout>

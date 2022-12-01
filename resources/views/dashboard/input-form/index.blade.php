@@ -1,4 +1,5 @@
-<x-app-layout title="Soal">
+<x-layout title="Soal">
+    <link rel="stylesheet" href="{{ asset('assets/css/table.css') }}">
     <div class="card">
         <div class="card-title px-3">
             <h5>Daftar Siswa</h5>
@@ -16,6 +17,7 @@
                         <option value="" disabled>Empty</option>
                     @endforelse
                 </select>
+                
                 <a href="{{ route('dashboard.input-form.create') }}" onclick="event.preventDefault()"
                     data-bs-toggle="modal" data-bs-target="#modalCreate" class="btn btn-primary"><i
                         class="bi bi-plus"></i>
@@ -206,4 +208,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-layout>

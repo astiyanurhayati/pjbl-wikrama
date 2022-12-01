@@ -1,4 +1,4 @@
-<x-app-layout title="Edit Paket Soal {{ $category->name }}">
+<x-layout title="Edit Paket Soal {{ $category->name }}">
     <div class="card">
         <div class="card-title px-3">
             <h5>Form Edit Paket Soal {{ $category->name }}</h5>
@@ -22,4 +22,4 @@
             </form>
         </div>
     </div>
-</x-app-layout>
+</x-layout>
