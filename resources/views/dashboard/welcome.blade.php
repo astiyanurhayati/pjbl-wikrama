@@ -12,4 +12,5 @@
 @endsection
 
 <p class="alert alert-success">Selamat Datang {{ auth()->user()->username }} </h1>
+    
 </x-layout>

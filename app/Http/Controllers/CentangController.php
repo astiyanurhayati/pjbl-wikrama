@@ -31,7 +31,7 @@ class CentangController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.input-form.edit');
     }
 
     /**

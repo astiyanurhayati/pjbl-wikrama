@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware('isAdmin')->group(function () {
-    Route::get('/welcome-teacher', [PendidikController::class, 'welcome_teacher'])->name('welcome_teacher');
+    // Route::get('/welcome-teacher', [PendidikController::class, 'welcome_teacher'])->name('welcome_teacher');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
     Route::post('/dashboard', [DashboardController::class, 'store'])->name('dashboard.store');
 
@@ -53,7 +53,7 @@ Route::middleware('isAdmin')->group(function () {
 
 Route::middleware('isStudent')->group(function () {
     
-    Route::get('/welcome', [PendidikController::class, 'welcome'])->name('welcome');
+    // Route::get('/welcome', [PendidikController::class, 'welcome'])->name('welcome');
 
     Route::get('/student', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/student', [DashboardController::class, 'store'])->name('dashboard.store');

@@ -29,7 +29,7 @@
           <div class="row justify-content-center">
             <div class="col-12">
               <div class=" table table-responsive-xl bg-white">
-                <table class="table mb-0 table-custom">
+                <table class="table mb-0 table-bordered">
                   <thead>
                     <tr>
                       <th class="th">No</th>

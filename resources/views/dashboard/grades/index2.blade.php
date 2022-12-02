@@ -8,8 +8,8 @@
       <h1>Manage Rombel</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Manage</li>
+          <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+          <li class="breadcrumb-item">Master</li>
           <li class="breadcrumb-item active">Rombel</li>
         </ol>
       </nav>
@@ -34,7 +34,7 @@
           <div class="row justify-content-center">
             <div class="col-12">
               <div class=" table table-responsive-xl bg-white">
-                <table class="table mb-0 table-custom">
+                <table class="table mb-0 table-bordered">
                   <thead>
                     <tr>
                       <th class="th">No</th>

@@ -29,9 +29,9 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if(Auth::user()->is_teacher == 1){
-                return redirect()->route('welcome_teacher');
+                return redirect()->route('dashboard');
             }else{
-                return redirect()->route('welcome');
+                return redirect()->route('dashboard');
             }
 
         }

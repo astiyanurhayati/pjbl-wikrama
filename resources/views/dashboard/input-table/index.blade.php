@@ -1,22 +1,23 @@
 <link rel="stylesheet" href="{{ asset('assets/css/table.css') }}">
 
 <x-layout title="soal">
+
     @section('subjudul')
     <div class="pagetitle">
-        <h1>Formulir PJBL</h1>
+        <h1>Rekap Hasil</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">Rekap Hasil </li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+                <li class="breadcrumb-item active">daftar rekap hasil</li>
             </ol>
         </nav>
     </div>
-    @endsection
+@endsection
 
 
     <div class="card">
         <div class="card-header" style="color: black">
-            <select class="form-select w-auto"
+            <select class="form-select w-auto" id="rombel" name="rombel"
                 onchange="window.location.href = `?grade=${this.value}&region={{ request()->get('region') }}`">
                 <option selected disabled hidden>Pilih Rombel</option>
                 <option value="">All</option>
@@ -35,8 +36,21 @@
 
                         <div class="row justify-content-center">
                             <div class="col-12">
+                                @if (session()->has('success'))
+                                <div class="alert alert-success mt-3" role="alert">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            @if ($errors->all())
+                                @foreach ($errors->all() as $error)
+                                    <div class="alert alert-danger mt-3" role="alert">
+                                        {{ $error }}
+                                    </div>
+                                @endforeach
+                            @endif
+                            
                                 <div class=" table table-responsive-xl bg-white">
-                                    <table class="table mb-0 table-custom">
+                                    <table class="table mb-0 table-bordered">
                                         <thead>
                                             <tr>
                                                 <th class="th">No</th>

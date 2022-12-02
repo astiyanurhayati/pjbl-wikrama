@@ -17,11 +17,13 @@ class PendidikController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function welcome(){
-        return view('dashboard.welcome');
-    }
+    // public function welcome(){
+    //     return view('dashboard.welcome');
+    // }
 
     public function welcome_teacher(){
+
+        
         return view('dashboard.welcome_teacher');
     }
 

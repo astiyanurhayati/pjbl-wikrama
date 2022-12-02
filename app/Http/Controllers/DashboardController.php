@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DailyActivity;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use Carbon\Carbon;
@@ -11,7 +12,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard.index');
+        $pembiasaan =  DailyActivity::where('student_id', Auth::user()->id)->get();
+        $job =  Job::where('student_id', Auth::user()->id)->get();
+        return view('dashboard.welcome_teacher', compact('pembiasaan', 'job'));
     }
 
     public function store(Request $request)

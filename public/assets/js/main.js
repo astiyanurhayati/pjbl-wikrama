@@ -4,6 +4,14 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+// In your Javascript (external .js resource or <script> tag)
+
+
+
+
+
+
 (function() {
     "use strict";
   

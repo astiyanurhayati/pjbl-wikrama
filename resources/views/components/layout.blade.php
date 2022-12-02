@@ -20,15 +20,21 @@
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    <!-- css untuk select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+
+<style>
+   
+</style>
+    
 
 </head>
 
@@ -37,9 +43,10 @@
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
-        <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-between jarak">
+            <a href="{{ route('dashboard') }}" class="logo d-flex align-items-center mx-3">
                 <img src="{{ asset('assets/img/wikrama.png') }}" alt="">
+                
                 <span class="d-none d-lg-block">Wikrama</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -104,8 +111,8 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             @if (auth()->user()->is_teacher)
-            <li class="nav-item {{ Route::is('welcome_teacher') ? 'active' : '' }}">
-                <a class="nav-link " href="{{ route('welcome_teacher') }}">
+            <li class="nav-item">
+                <a class="nav-link  {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
@@ -114,7 +121,7 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-journal-text"></i><span>Manage</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-journal-text"></i><span>Master</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
@@ -134,7 +141,7 @@
             {{-- <li class="nav-heading">Pages</li> --}}
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('dashboard.categories.index') }} ">
+                <a class="nav-link collapsed {{ Route::is('dashboard.categories.*') ? 'active' : '' }}" href="{{ url('/dashboard/categories') }} ">
                     <i class="fa-regular fa-bookmark"></i>
                     <span>Kategori Pembiasaan</span>
                 </a>
@@ -159,10 +166,14 @@
                 <a class="nav-link collapsed" href="{{ route('dashboard.input-table.index') }}">
                     <i class="fa-brands fa-readme"></i><span>Rekap Hasil</span>
                 </a>
-            </li><!-- End Login Page Nav -->
+            </li>
+
+
             @else
+
+
             <li class="nav-item">
-                <a class="nav-link " href="{{ url('/welcome') }}">
+                <a class="nav-link {{ request()->is('/student') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
@@ -175,7 +186,7 @@
                 </a>
                 <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="{{ route('dashboard') }}">
+                        <a href="#">
                             <i class="bi bi-circle"></i><span>Form</span>
                         </a>
                     </li>
@@ -232,14 +243,10 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="{{ asset('assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
+    
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/chart.js/chart.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/echarts/echarts.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/quill/quill.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
-    <script src="{{ asset('assets/vendor/tinymce/tinymce.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
+   
+    
 
 
 
@@ -270,5 +277,51 @@
     </script>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+
+{{-- link dashboard card siswa --}}
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+
+
+
+<!-- js untuk select2  -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+  $(document).ready(function () {
+      $("#rombel").select2({
+          placeholder: "Please Select"
+      });
+
+     
+  });
+</script>
+
+
+<script src="{{ asset('assets/app.3def9732.js') }}"></script>
+<script>
+$(document).ready(function() {
+
+    $('body').on('click', '#detailJob', function(event) {
+
+        event.preventDefault();
+        var id = $(this).data('id');
+        $.get('pendidik2/' + id, function(data) {
+            document.querySelector('#date-job').innerHTML = new Date(data.data.date)
+                .toLocaleDateString('id-ID', {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric"
+                });;
+            document.querySelector('#content-job').innerHTML = data.data.content;
+        })
+    });
+
+});
+</script>
+
 
 </html>

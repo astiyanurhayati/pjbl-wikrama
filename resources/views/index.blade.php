@@ -5,7 +5,7 @@
             <p>
                 Website laporan harian pekerjaan siswa dengan alur berbasis industri.
             </p>
-            <img class="login__left__img" src="/img/hero-login.png" alt="Login" />
+            <img class="login__left__img" src="{{ asset('assets/img/logo.png') }}" alt="Login" />
         </div>
         <div class="login__right">
             <h1 class="login__h">Sign In</h1>
