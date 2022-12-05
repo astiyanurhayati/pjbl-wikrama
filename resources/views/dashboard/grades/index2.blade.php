@@ -1,8 +1,8 @@
 
 
-<link rel="stylesheet" href="{{ asset('assets/css/table.css') }}">
 
 <x-layout title="Dashboard">
+  <link rel="stylesheet" href="{{ asset('assets/css/table.css') }}">
   @section('subjudul')
   <div class="pagetitle">
       <h1>Manage Rombel</h1>
@@ -23,7 +23,7 @@
   @endif
   <div class="tombol">
     <div></div>
- <a href="{{ url('dashboard/grades/create') }}"> <button class="btn btn-success" style="    margin-right: 13px;">+ Rombel </button></a>
+ <a href="{{ url('dashboard/grades/create') }}"> <button class="btn btn-success hover" style="margin-right: 13px; border: none;" >+ Rombel </button></a>
   </div>
 <div class="card pt-3">
   <section class="intro">

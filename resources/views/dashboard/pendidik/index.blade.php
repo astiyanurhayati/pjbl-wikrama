@@ -3,6 +3,7 @@ use App\Http\Controllers\PendidikController;
 ?>
 
 <x-layout title="Hasil">
+    <link rel="stylesheet" href="asset('assets/css/table.css')">
 
     @section('subjudul')
     <div class="pagetitle">
@@ -40,7 +41,10 @@ use App\Http\Controllers\PendidikController;
                     <option value="11">November</option>
                     <option value="12">Desember</option>
                 </select>
-                <button type="submit" class="btn btn-primary ms-2">Search</button>
+                
+                    <button type="submit" class="btn btn-primary ms-2" style="background-color: #415798 !important">Search</button>
+               
+                
                 <button href="{{ route('dashboard.pendidik.index') }}" class="btn btn-warning ms-2">Reset</button>
             </form>
         </div>

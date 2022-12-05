@@ -1,4 +1,5 @@
 <x-layout title="Hasil">
+    <link rel="stylesheet" href="{{asset('assets/css/table.css')}}">
     @section('subjudul')
     <div class="pagetitle">
         <h1>Rekap Pekerjaan</h1>
@@ -35,8 +36,8 @@
                     <option value="11">November</option>
                     <option value="12">Desember</option>
                 </select>
-                <button type="submit" class="btn btn-primary ms-2">Search</button>
-                <button href="{{ route('dashboard.pendidik2.index') }}" class="btn btn-warning ms-2">Reset</button>
+                <button type="submit" class="btn btn-primary ms-2" style="background: #415798">Search</button>
+                <button href="{{ route('dashboard.pendidik2.index') }}" class="btn btn-warning ms-2" style="background: #ffc107">Reset</button>
             </form>
         </div>
         <div class="card-body">
@@ -64,7 +65,7 @@
                             <td>{{ $job->end_jp }}</td>
                             <td>{{ $job->duration }}</td>
                             <td>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="{{ $job->id }}" id="detailJob">
+                                <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="{{ $job->id }}" id="detailJob" class="btn btn-primary hover">
                                 Lihat Detail
                                 </a>
                             </td>
@@ -96,4 +97,5 @@
             </div>
         </div>
     </div>
+    
 </x-layout>

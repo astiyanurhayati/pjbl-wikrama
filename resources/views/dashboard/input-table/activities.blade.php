@@ -1,4 +1,5 @@
-<x-app-layout title="Hasil">
+<x-layout title="Hasil">
+    <link rel="stylesheet" href="{{asset('assets/css/table.css')}}">
     <div class="card">
         <div class="card-title d-flex align-items-center px-3">
             <div class="col-6">
@@ -20,7 +21,7 @@
                     <option value="11">November</option>
                     <option value="12">Desember</option>
                 </select>
-                <button type="submit" class="btn btn-primary ms-2">Search</button>
+                <button type="submit" class="btn btn-primary  ms-2 tombol">Search</button>
                 <button href="{{ route('dashboard.input-table.activities', $studentData->id) }}" class="btn btn-warning ms-2">Reset</button>
             </form>
         </div>
@@ -73,7 +74,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Deskripsi Pekerjaan</h1>
+                        <h1 class="modal-title fs-5 hover" id="staticBackdropLabel">Deskripsi Pekerjaan</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -91,4 +92,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-layout>

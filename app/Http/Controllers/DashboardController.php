@@ -5,16 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\DailyActivity;
 use Illuminate\Http\Request;
 use App\Models\Job;
+use App\Models\User;
+use App\Models\Grade;
+use App\Models\Region;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+    class DashboardController extends Controller
 {
     public function index()
     {
         $pembiasaan =  DailyActivity::where('student_id', Auth::user()->id)->get();
         $job =  Job::where('student_id', Auth::user()->id)->get();
-        return view('dashboard.welcome_teacher', compact('pembiasaan', 'job'));
+        $siswa = User::all();
+        $grades = Grade::orderBy('name')->get();
+        $regions = Region::all();
+
+     
+        return view('dashboard.welcome_teacher', compact('pembiasaan', 'job', 'regions', 'grades', 'siswa'));
     }
 
     public function store(Request $request)

@@ -1,4 +1,5 @@
-<x-app-layout title="Edit Siswa {{ $input_table->name }}">
+<x-layout title="Edit Siswa {{ $input_table->name }}">
+    <link rel="stylesheet" href="{{asset('assets/css/table.css')}}">
     <div class="card">
         <div class="card-title">
             <h5>Form Edit Siswa {{ $input_table->name }}</h5>
@@ -102,8 +103,8 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary tombol">Submit</button>
             </form>
         </div>
     </div>
-</x-app-layout>
+</x-layout>

@@ -1,4 +1,4 @@
-<x-layout title="Soal">
+<x-layout title="input form">
     <link rel="stylesheet" href="{{ asset('assets/css/table.css') }}">
     @section('subjudul')
     <div class="pagetitle">
@@ -19,18 +19,17 @@
 
         <div class="card-body">
             <div class="d-flex justify-content-between form-group">
-                <select class="form-control w-auto" id="rombel" name="rombel"
-                    onchange="window.location.href = `?grade=${this.value}&region={{ request()->get('region') }}`">
-                    <option selected disabled>Pilih Rombel</option>
-               
-                    @forelse ($grades as $grade)
-                        <option {{ $grade->id == request()->get('grade') ? 'selected disabled' : '' }}
-                            value="{{ $grade->id }}">{{ $grade->name }}</option>
-                    @empty
-                        <option value="" disabled>Empty</option>
-                    @endforelse
-                </select>
-
+                <select class="form-select w-auto"
+                onchange="window.location.href = `?grade=${this.value}&region={{ request()->get('region') }}`">
+                <option selected disabled>Pilih Rombel</option>
+                <option value="">All</option>
+                @forelse ($grades as $grade)
+                    <option {{ $grade->id == request()->get('grade') ? 'selected disabled' : '' }}
+                        value="{{ $grade->id }}">{{ $grade->name }}</option>
+                @empty
+                    <option value="" disabled>Empty</option>
+                @endforelse
+             </select>
                 <a href="{{ route('dashboard.input-form.create') }}" onclick="event.preventDefault()"
                 data-bs-toggle="modal" data-bs-target="#modalCreate" class="btn btn-primary"><i
                     class="bi bi-plus"></i>
@@ -78,14 +77,15 @@
                                 <td>
                                    {{ $student->user->username }}
                                 </td>
-                                <td class="column__max">
+                                <td class="column__max text-center">
                                      <a href="{{ route('dashboard.input-form.edit', $student->id) }}" class="text-blue">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
                                 </td>
-                                <td class="column__max">
+                                <td class="column__max text-center">
                                     <form action="{{ route('dashboard.input-form.destroy', $student->id) }}"
                                         method="POST">
+                                        @csrf
                                         @method('DELETE')
                                         <a onclick="event.preventDefault();
                                 this.closest('form').submit();"
@@ -223,8 +223,9 @@
     </div>
 
     
-    <script>
+    {{-- <script>
         $(document).ready(function() {
         $('.js-example-basic-single').select2();
     }); 
+    </script> --}}
 </x-layout>

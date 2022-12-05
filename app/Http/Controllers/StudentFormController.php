@@ -130,6 +130,6 @@ class StudentFormController extends Controller
     {
         $input_form->user->delete();
 
-        return to_route('dashboard.input-form.index')->with('success', 'Berhasil menghapus siswa ' . $input_form->name);
+        return redirect()->back()->with('success', 'Berhasil menghapus siswa ' . $input_form->name);
     }
 }

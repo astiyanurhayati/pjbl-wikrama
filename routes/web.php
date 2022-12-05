@@ -50,16 +50,19 @@ Route::middleware('isAdmin')->group(function () {
     });
 });
 
+Route::get('tes', function(){
+    return view('dashboard.input-table.edit', ['input_table' => 'ini tes', 'name' => '']);
+});
 
 Route::middleware('isStudent')->group(function () {
     
     // Route::get('/welcome', [PendidikController::class, 'welcome'])->name('welcome');
-
     Route::get('/student', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/student', [DashboardController::class, 'store'])->name('dashboard.store');
     Route::prefix('/student')->name('dashboard.')->group(function () {
         Route::resource('pendidik', PendidikController::class);
         // Route::resource('centang', CentangController::class);
+        Route::get('/form', [CentangController::class, 'form'])->name('form');                                    
         Route::get('centang', [CentangController::class, 'index'])->name('centang.index');
         Route::post('centang/store', [CentangController::class, 'store'])->name('centang.store');
         Route::resource('pendidik2', Pendidik2Controller::class);

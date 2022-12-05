@@ -1,4 +1,5 @@
 <x-layout title="Soal">
+  
     @section('subjudul')
     <div class="pagetitle">
         <h1>Tabel Soal</h1>
@@ -15,8 +16,8 @@
     <div class="tombol">
         <div></div>
         <a href="{{ route('dashboard.activities.create') }}" onclick="event.preventDefault()" data-bs-toggle="modal"
-            data-bs-target="#modalCreate" class="btn btn-primary"><i class="bi bi-plus"></i>
-            Tambah Soal
+            data-bs-target="#modalCreate" class="btn btn-primary hover"><i class="bi bi-plus"></i>
+             Soal
         </a>
     </div>
     <div class="card">
@@ -61,13 +62,13 @@
                                             {{ $no++ }}
                                         </td>
                                         <td>{{ $activity->name }}</td>
-                                        <td class="column__max">
+                                        <td class="column__max text-center">
                                             <a href="{{ route('dashboard.activities.edit', $activity->id) }}"
                                                 class="text-blue">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
                                         </td>
-                                        <td class="column__max">
+                                        <td class="column__max text-center" >
                                             <form action="{{ route('dashboard.activities.destroy', $activity->id) }}"
                                                 method="POST">
                                                 @csrf

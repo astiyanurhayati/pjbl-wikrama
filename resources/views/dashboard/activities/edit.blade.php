@@ -1,4 +1,5 @@
 <x-layout title="Edit Soal {{ $activity->name }}">
+    <link rel="stylesheet" href="{{asset('assets/css/table.css')}}">
     <div class="card">
         <div class="card-title px-3">
             <h5>Form Edit Soal {{ $activity->name }}</h5>
@@ -37,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary hover">Submit</button>
                 <a href="{{ route('dashboard.activities.index') }}" class="btn btn-secondary">Kembali</a>
             </form>
         </div>

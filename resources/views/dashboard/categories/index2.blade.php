@@ -1,4 +1,5 @@
-<x-app-layout title="Paket Soal">
+<x-layout title="Paket Soal">
+    <link rel="stylesheet" href="{{asset('assets/css/table.css')}}">
     <div class="card">
         <div class="card-title px-3">
             <h5>Table Paket Soal</h5>
@@ -61,4 +62,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-layout>

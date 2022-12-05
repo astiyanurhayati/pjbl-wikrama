@@ -16,6 +16,12 @@ class CentangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function form(){
+        return view('dashboard.index');
+    }
+
     public function index()
     {
         $activities = Activity::orderBy('name')->get();

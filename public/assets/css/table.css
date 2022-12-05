@@ -8,6 +8,14 @@
     width: 10px;
 }
 
+.hover:hover{
+    background-color: #394a7b !important;
+}
+
+.hover{
+    border: none;
+    background-color: orange !important;
+}
 .tombol{
     display: flex;
     justify-content: space-between;

@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="{{ asset('assets/css/table.css') }}">
 <x-layout title="Dashboard">
+    <link rel="stylesheet" href="{{ asset('assets/css/table.css') }}">
 
     @section('subjudul')
     <div class="pagetitle">
@@ -89,7 +89,7 @@
                             @enderror
                         </div>
                         <div class="tombol">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary hover">Submit</button>
                     </div>
                     </form>
                 </div>

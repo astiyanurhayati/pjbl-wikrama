@@ -1,4 +1,4 @@
-<x-app-layout title="Hasil">
+<x-layout title="Hasil">
     <div class="card">
         <div class="card-title d-flex align-items-center px-3">
             <div class="col-6">
@@ -117,4 +117,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-layout>
