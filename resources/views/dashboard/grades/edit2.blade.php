@@ -4,7 +4,7 @@
         <h1>Edit Data Rombel</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Manage</a></li>
+                <li class="breadcrumb-item"><a href="index.html">Master</a></li>
                 <li class="breadcrumb-item">Rombel</li>
                 <li class="breadcrumb-item active">Edit</li>
             </ol>
@@ -19,30 +19,24 @@
                 <h5 class="card-title">Edit Rombel {{ $grade->name }}</h5>
 
                 <!-- Vertical Form -->
-                <form class="row g-3" action="{{ route('dashboard.grades.update', $grade->id) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-
-                    <div class="col-12">
-                        <label for="rombel" class="form-label">Rombel</label>
-
-                        <input type="text" class="form-control  @error('name') is-invalid @enderror " id="rombel" value="{{ old('name', $grade->name) }}" name="name" id="name" placeholder="RPL XII-2">
-
-                        @error('name')
-                        <div class="invalid-feedback">
-                            {{ $message }}
+                <div class="card-body">
+                    <form action="{{ route('dashboard.grades.update', $grade->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Rombel</label>
+                            <input type="text" value="{{ old('name', $grade->name) }}" name="name"
+                                class="form-control @error('name') is-invalid @enderror" id="name" placeholder="RPL XII-2">
+                            @error('name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
-                        @enderror
-
-                    </div> 
-
-                    <div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <a href="{{ route('dashboard.grades.index') }}">
-                             <button type="button" class="btn btn-secondary">Kembali</button>
-                        </a>
-                    </div>
-                </form>
+                        <a href="{{ route('dashboard.grades.index') }}" class="btn btn-secondary">Kembali</a>
+                    </form>
+                </div>
 
             </div>
         </div>
